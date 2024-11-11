@@ -1,0 +1,34 @@
+//Packages
+const express = require('express');
+const http = require('http');
+const cors = require('cors');
+const moongose = require('mongoose');
+const { default: mongoose } = require('mongoose');
+require('dotenv').config();
+
+//Custom packages
+const authRoutes = require('./routes/authRoutes');
+
+const PORT = process.env.PORT || process.env.API_PORT;
+
+const app = express();
+app.use(express.json());
+app.use(cors());
+
+//Register routes
+app.use('/api/auth', authRoutes);
+
+const server = http.createServer(app);
+
+//Connect to database and start the server
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => {
+     server.listen(PORT, () =>{
+         console.log(`Server is listening on ${PORT}`);
+     });
+   })
+  .catch(error =>{
+      console.log('Database connection failed, server not started');
+      console.log(error);
+  });
