@@ -1,4 +1,5 @@
 import * as api from '../../api';
+import { openAlertMessage } from './alertActions';
 
 const authActions = {
     SET_USER_DETAILS: 'AUTH.SET_USER_DETAILS',
@@ -25,8 +26,7 @@ const login = (userDetails, navigate) => {
             console.log(userDetails);
             console.log(response);
             if (response.error) {
-                // Handle error (e.g., show an alert or toast notification)
-                alert('Login failed. Please check your credentials.');
+                dispatch(openAlertMessage(response?.exception?.response?.data));
             } else {
                 const { userDetails } = response?.data; // Destructure data from response
                 localStorage.setItem('user', JSON.stringify(userDetails));
@@ -46,7 +46,7 @@ const register = (userDetails, navigate) => {
             const response = await api.register(userDetails); // Add 'await' for the API call
 
             if (response.error) {
-                // Handle error (e.g., show an alert or toast notification)
+                dispatch(openAlertMessage(response?.exception?.response?.data));
                 alert('Registration failed. Please try again.');
             } else {
                 const { userDetails } = response?.data; // Destructure data from response

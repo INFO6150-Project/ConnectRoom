@@ -5,9 +5,11 @@ import RegisterPage from './authPages/RegisterPage/RegisterPage';
 import Dashboard from './Dashboard/Dashboard';
 
 import './App.css';
+import AlertNotification from './shared/components/AlertNotification';
 
 function App() {
   return (
+    <>
     <Router>
       <Routes>
         <Route path="/login" element={<LoginPage />} />
@@ -16,6 +18,8 @@ function App() {
         <Route path="/" element={<Navigate to="/dashboard" />} />
       </Routes>
     </Router>
+    <AlertNotification />
+    </>
   );
 }
 
