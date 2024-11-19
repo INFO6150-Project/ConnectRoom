@@ -1,64 +1,54 @@
-import * as api from '../../api';
-import { openAlertMessage } from './alertActions';
+import * as api from "../../api";
+import { openAlertMessage } from "./alertActions";
 
-const authActions = {
-    SET_USER_DETAILS: 'AUTH.SET_USER_DETAILS',
+export const authActions = {
+  SET_USER_DETAILS: "AUTH.SET_USER_DETAILS",
 };
 
 export const getActions = (dispatch) => {
-    return {
-        login: (userDetails, navigate) => dispatch(login(userDetails, navigate)),
-        register: (userDetails, navigate) => dispatch(register(userDetails, navigate)),
-    };
+  return {
+    login: (userDetails, history) => dispatch(login(userDetails, history)),
+    register: (userDetails, history) =>
+      dispatch(register(userDetails, history)),
+    setUserDetails: (userDetails) => dispatch(setUserDetails(userDetails)),
+  };
 };
 
 const setUserDetails = (userDetails) => {
-    return {
-        type: authActions.SET_USER_DETAILS,
-        userDetails,
-    };
+  return {
+    type: authActions.SET_USER_DETAILS,
+    userDetails,
+  };
 };
 
-const login = (userDetails, navigate) => {
-    return async (dispatch) => {
-        try {
-            const response = await api.login(userDetails); // Add 'await' for the API call
-            console.log(userDetails);
-            console.log(response);
-            if (response.error) {
-                dispatch(openAlertMessage(response?.exception?.response?.data));
-            } else {
-                const { userDetails } = response?.data; // Destructure data from response
-                localStorage.setItem('user', JSON.stringify(userDetails));
+const login = (userDetails, history) => {
+  return async (dispatch) => {
+    const response = await api.login(userDetails);
+    console.log(response);
+    if (response.error) {
+      dispatch(openAlertMessage(response?.exception?.response?.data));
+    } else {
+      const { userDetails } = response?.data;
+      localStorage.setItem("user", JSON.stringify(userDetails));
 
-                dispatch(setUserDetails(userDetails));
-                navigate('/dashboard'); // Navigate to the dashboard
-            }
-        } catch (error) {
-            console.error('Login Error:', error);
-        }
-    };
+      dispatch(setUserDetails(userDetails));
+      history.push("/dashboard");
+    }
+  };
 };
 
-const register = (userDetails, navigate) => {
-    return async (dispatch) => {
-        try {
-            const response = await api.register(userDetails); // Add 'await' for the API call
+const register = (userDetails, history) => {
+  return async (dispatch) => {
+    const response = await api.register(userDetails);
+    console.log(response);
+    if (response.error) {
+      dispatch(openAlertMessage(response?.exception?.response?.data));
+    } else {
+      const { userDetails } = response?.data;
+      localStorage.setItem("user", JSON.stringify(userDetails));
 
-            if (response.error) {
-                dispatch(openAlertMessage(response?.exception?.response?.data));
-                alert('Registration failed. Please try again.');
-            } else {
-                const { userDetails } = response?.data; // Destructure data from response
-                localStorage.setItem('user', JSON.stringify(userDetails));
-
-                dispatch(setUserDetails(userDetails));
-                navigate('/dashboard'); // Navigate to the dashboard
-            }
-        } catch (error) {
-            console.error('Registration Error:', error);
-        }
-    };
+      dispatch(setUserDetails(userDetails));
+      history.push("/dashboard");
+    }
+  };
 };
-
-export { authActions };
