@@ -2,9 +2,10 @@
 const express = require('express');
 const http = require('http');
 const cors = require('cors');
-const moongose = require('mongoose');
 const { default: mongoose } = require('mongoose');
 require('dotenv').config();
+
+const socketServer = require('./socketServer');
 
 //Custom packages
 const authRoutes = require('./routes/authRoutes');
@@ -19,6 +20,7 @@ app.use(cors());
 app.use('/api/auth', authRoutes);
 
 const server = http.createServer(app);
+socketServer.registerSocketServer(server);
 
 //Connect to database and start the server
 mongoose
