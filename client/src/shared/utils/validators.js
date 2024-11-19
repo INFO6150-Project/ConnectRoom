@@ -16,7 +16,7 @@ const validatePassword = (password) => {
     return password.length > 6 && password.length < 12;
 };
 
-const validateMail = (mail) => {
+export const validateMail = (mail) => {
     const emailPattern = /^[a-zA-Z0-9._-]+@northeastern\.edu$/;
     return emailPattern.test(mail);
 };
