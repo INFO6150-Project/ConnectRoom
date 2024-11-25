@@ -7,7 +7,7 @@ import AppBar from "./AppBar/AppBar";
 import { logout } from "../shared/utils/auth";
 import { connect } from "react-redux";
 import { getActions } from "../store/actions/authActions";
-import { connectWithSocketServer } from "../realTimeCommunication/socketConnection";
+import { connectWithSocketServer } from "../realtimeCommunication/socketConnection.js";
 
 const Wrapper = styled("div")({
   width: "100%",

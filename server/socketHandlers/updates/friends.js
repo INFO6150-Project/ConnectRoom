@@ -15,7 +15,7 @@ const updateFriendsPendingInvitations = async(userId) => {
         const io = serverStore.getSocketServerInstance();
 
         recieverList.forEach(recieverSocketId =>{
-            io.to(recieverSocketId).emit('friends-invitations', {
+            io.to(recieverSocketId).emit('friends-invitation', {
                 pendingInvitations : pendingInvitations ? pendingInvitations : [],
             });
         });

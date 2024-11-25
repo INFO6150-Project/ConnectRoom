@@ -48,8 +48,8 @@ const PendingInvitationsListItem = ({
                 </Typography>
                 <InvitationDecisionButtons
                 disabled = {buttonDisabled}
-                acceptFriendInvitation = {handleAcceptedInvitation}
-                rejectFriendInvitation = {handleRejectedInvitation}
+                acceptInvitationHandler = {handleAcceptedInvitation}
+                rejectInvitationHandler = {handleRejectedInvitation}
             />
             </Box>
         </div>
