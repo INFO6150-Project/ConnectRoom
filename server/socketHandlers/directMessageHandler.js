@@ -33,6 +33,7 @@ const directMessageHandler = async(socket, data) => {
 
             // perform an update to sender and reciever if is online
             chatUpdates.updateChatHistory(conversation._id.toString());
+            
         } else {
             // create new conversation if not exists
             const newConversation = await Conversation.create({
