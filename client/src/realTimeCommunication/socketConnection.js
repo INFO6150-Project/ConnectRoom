@@ -63,6 +63,11 @@ export const getDirectChatHistory = ( data ) => {
     socket.emit('direct-chat-history', data);
 }
 
+export const joinRoom = (data) => {
+    socket.emit('room-join', data);
+}
+
 export const createNewRoom = () => {
     socket.emit('room-create');
 }
+
