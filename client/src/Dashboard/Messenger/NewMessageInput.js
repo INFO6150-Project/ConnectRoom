@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { styled } from '@mui/system';
 import { connect } from 'react-redux';
-import { sendDirectMessage } from '../../realtimeCommunication/socketConnection';
+import { sendDirectMessage } from '../../realTimeCommunication/socketConnection';
 
 const MainContainer = styled('div')({
     height: '60px',
