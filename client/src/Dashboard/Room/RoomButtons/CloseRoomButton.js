@@ -1,11 +1,11 @@
 import React from 'react';
 import { IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import MicOffIcon from '@mui/icons-material/MicOff';
+import * as roomHander from '../../../realTimeCommunication/roomHandler';
 
 const CloseRoomButton = () => {
     const handleLeaveRoom = () => {
-        
+        roomHander.leaveRoom();
     };
 
     return (

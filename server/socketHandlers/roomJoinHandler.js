@@ -6,7 +6,7 @@ const roomJoinHandler = (socket, data) => {
 
     const participantDetails = {
         userId: socket.user.userId,
-        socketId: socket.Id
+        socketId: socket.id
     };
 
     const roomDetails = serverStore.getActiveRoom(roomId);

@@ -71,3 +71,7 @@ export const createNewRoom = () => {
     socket.emit('room-create');
 }
 
+export const leaveRoom = (data) => {
+    socket.emit('room-leave', data);
+};
+
