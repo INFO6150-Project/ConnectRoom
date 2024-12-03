@@ -4,7 +4,7 @@ import { styled } from '@mui/system';
 import Messages from './Messages/Messages';
 import NewMessageInput from './NewMessageInput';
 // import NewMessageInput from './NewMessageInput'
-import { getDirectChatHistory } from '../../realtimeCommunication/socketConnection';
+import { getDirectChatHistory } from '../../realTimeCommunication/socketConnection';
 
 const Wrapper = styled('div')({
     flexGrow: 1

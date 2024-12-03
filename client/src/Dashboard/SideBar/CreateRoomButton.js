@@ -1,11 +1,17 @@
 import React from 'react';
 import Button from '@mui/material/Button';
-import GroupIcon from '@mui/icons-material/Groups';
-import { borderRadius, height, minWidth } from '@mui/system';
+import AddIcon from '@mui/icons-material/Add';
+import * as roomHandler from '../../realTimeCommunication/roomHandler';
 
-const MainPageButton = ()=>{
-    return(
+const CreateRoomButton = () => {
+
+    const createRoomHandler = () => {
+        roomHandler.createNewRoom();
+    }
+
+    return (
         <Button
+        onClick={createRoomHandler}
         style = {{
             width: '48px',
             height: '48px',
@@ -18,9 +24,9 @@ const MainPageButton = ()=>{
             backgroundColor: '#5865F2',
         }}
         >
-            <GroupIcon></GroupIcon>
+            <AddIcon />
         </Button>
-    )
-}
+    );
+};
 
-export default MainPageButton;
+export default CreateRoomButton;
