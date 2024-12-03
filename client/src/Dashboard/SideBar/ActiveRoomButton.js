@@ -1,6 +1,6 @@
 import { Button, Tooltip } from '@mui/material';
 import Avatar from '../../shared/components/Avatar';
-import * as roomHandler from '../../realTimeCommunication/roomHandler';
+import * as roomHandler from '../../realtimeCommunication/roomHandler';
 import React from 'react';
 
 const ActiveRoomButton = ({
