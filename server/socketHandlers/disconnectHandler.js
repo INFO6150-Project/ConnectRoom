@@ -1,18 +1,20 @@
-const serverStore = require('../serverStore');
-const roomLeaveHandler = require('./roomLeaveHandler');
+const serverStore = require("../serverStore");
+const roomLeaveHandler = require("./roomLeaveHandler");
 
 const disconnectHandler = (socket) => {
-    const activeRooms = serverStore.getActiveRooms();
+  const activeRooms = serverStore.getActiveRooms();
 
-    activeRooms.forEach(activeRoom => {
-        const userInRoom = activeRoom.participants.some(participant => participant.socketId === socket.id);
+  activeRooms.forEach((activeRoom) => {
+    const userInRoom = activeRoom.participants.some(
+      (participant) => participant.socketId === socket.id
+    );
 
-        if(userInRoom) {
-            roomLeaveHandler(socket, {roomId: activeRoom.roomId});
-        }
-    })
+    if (userInRoom) {
+      roomLeaveHandler(socket, { roomId: activeRoom.roomId });
+    }
+  });
 
-    serverStore.removeConnectedUser(socket.id);
+  serverStore.removeConnectedUser(socket.id);
 };
 
-module.exports = disconnectHandler
+module.exports = disconnectHandler;

@@ -7,9 +7,8 @@ import AppBar from "./AppBar/AppBar";
 import { logout } from "../shared/utils/auth";
 import { connect } from "react-redux";
 import { getActions } from "../store/actions/authActions";
-import { connectWithSocketServer } from '../realtimeCommunication/socketConnection';
+import { connectWithSocketServer } from "../realtimeCommunication/socketConnection";
 import Room from "./Room/Room";
-
 
 const Wrapper = styled("div")({
   width: "100%",
@@ -23,8 +22,7 @@ const Dashboard = ({ setUserDetails, isUserInRoom }) => {
 
     if (!userDetails) {
       logout();
-    } 
-    else {
+    } else {
       setUserDetails(JSON.parse(userDetails));
       connectWithSocketServer(JSON.parse(userDetails));
     }
@@ -41,11 +39,11 @@ const Dashboard = ({ setUserDetails, isUserInRoom }) => {
   );
 };
 
-const mapStoreStateToProps = ({room}) => {
+const mapStoreStateToProps = ({ room }) => {
   return {
     ...room,
-  }
-}
+  };
+};
 
 const mapActionsToProps = (dispatch) => {
   return {
