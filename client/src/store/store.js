@@ -3,7 +3,7 @@ import { combineReducers, createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 
 import authReducer from "./reducers/authReducer";
-import alertReducer from "./reducers/alertReducer";
+import alertReducer from "./reducers/AlertReducer";
 import friendsReducer from "./reducers/friendsReducer";
 import chatReducer from "./reducers/chatReducer";
 import roomReducer from "./reducers/roomReducer";
