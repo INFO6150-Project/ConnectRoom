@@ -25,7 +25,7 @@ const AddFriendButton = () => {
     <>
       <CustomPrimaryButton
         additionalStyles={additionalStyles}
-        label="Add Friend"
+        label="Add Husky"
         onClick={handleOpenAddFriendDialog}
       />
       <AddFriendDialog
