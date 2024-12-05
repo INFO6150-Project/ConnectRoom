@@ -43,6 +43,12 @@ const LoginPageFooter = ({ handleLogin, isFormValid }) => {
         additionalStyles={{ marginTop: "5px" }}
         redirectHandler={handlePushToRegisterPage}
       />
+      <RedirectInfo
+        text="Discover new connections? "
+        redirectText="NEUConnect"
+        additionalStyles={{ marginTop: "5px" }}
+        redirectHandler={handlePushToRegisterPage}
+      />
     </>
   );
 };
