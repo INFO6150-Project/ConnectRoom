@@ -16,11 +16,11 @@ const LoginPageFooter = ({ handleLogin, isFormValid }) => {
   const navigate = useNavigate();
 
   const handlePushToRegisterPage = () => {
-    window.location.href = "http://localhost:3001/register";
+    window.location.href = "/register";
   };
 
   const handlePushToHomePage = () => {
-    window.location.href = "http://localhost:3001/";
+    window.location.href = "/";
   };
 
   return (

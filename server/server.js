@@ -2,6 +2,7 @@ const express = require("express");
 const http = require("http");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const path = require("path");
 require("dotenv").config();
 
 const socketServer = require("./socketServer");
@@ -18,9 +19,21 @@ app.use(cors());
 app.use("/api/auth", authRoutes);
 app.use("/api/friend-invitation", friendInvitationRoutes);
 
+// ----------------------
+// 🚀 SERVE REACT BUILD
+// ----------------------
+app.use(express.static(path.join(__dirname, "build")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
+// ----------------------
+
+// setup socket + server
 const server = http.createServer(app);
 socketServer.registerSocketServer(server);
 
+// connect to MongoDB then start server
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
